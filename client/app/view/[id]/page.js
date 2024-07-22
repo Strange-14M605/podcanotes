@@ -10,11 +10,11 @@ import DeleteNote from "./components/DeleteNote.jsx"
 const page = () => {
   const [note, setNote] = useState({})
   const {id} = useParams();
-  const note_id = +id;
+  // const note_id = +id;
 
   const getNote = async()=>{
     try {
-      const response = await fetch(`http://localhost:5000/note/${note_id+1}`);
+      const response = await fetch(`http://localhost:5000/note/${id}`);
       const jsonData = await response.json();
       setNote(jsonData);
     } catch (error) {
@@ -40,8 +40,8 @@ const page = () => {
 
       <div className="w-1/4">
         <a href={note.url}>{note.url}</a>
-        <EditNote />
-        <DeleteNote />
+        <EditNote id={id} />
+        <DeleteNote id={id} />
       </div>
     </div>
   );

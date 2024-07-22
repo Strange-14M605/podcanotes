@@ -31,7 +31,7 @@ const NoteList = () => {
         return (
           <NoteCard
             key={index}
-            id={index}
+            id={note.note_id}
             title={note.title}
             note={note.note}
             tag={note.tag}
