@@ -20,7 +20,7 @@ app.post("/note", async (req, res) => {
       "INSERT INTO notes (title, note, tag, url) VALUES ($1, $2, $3, $4) RETURNING *",
       [title, note, tag, url]
     );
-    // console.log(addNote.rows);
+    console.log(addNote.rows);
     res.json(addNote.rows[0]);
   } catch (error) {
     console.error(error.message);
