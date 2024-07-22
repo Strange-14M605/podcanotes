@@ -1,8 +1,11 @@
-import Image from "next/image";
+import React from "react";
+
+//components
+import NoteList from "./components/NoteList"
 
 export default function Home() {
-  return (
-    <main>
-    </main>
-  );
+  
+  return <main>
+    <NoteList />
+  </main>;
 }
