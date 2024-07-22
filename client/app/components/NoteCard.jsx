@@ -1,8 +1,8 @@
-// import React from "react";
-import Link from "next/link";
+import { useRouter } from 'next/navigation'
 
 const NoteCard = ({ id, title, note, tag}) => {
     const truncatedNote = `${note.substring(0, 30)}...`;
+    const router = useRouter();
 
   return <div className="card bg-base-100 w-96 shadow-xl">
   <div className="card-body">
@@ -10,10 +10,9 @@ const NoteCard = ({ id, title, note, tag}) => {
     <h6>{tag}</h6>
     <p>{truncatedNote}</p>
     <div className="card-actions justify-end">
-      {/* <button className="btn btn-warning btn-outline">View</button> */}
-      <Link href={`/view`} className="btn btn-warning btn-outline">
-            View
-          </Link>
+      <button type="button" onClick={() => router.push(`/view/${id}`)}>
+      View
+    </button>
     </div>
   </div>
 </div>;

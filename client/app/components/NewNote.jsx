@@ -30,13 +30,13 @@ const NewNote = () => {
     <div className="flex-none">
       <button
         className="btn btn-warning btn-outline"
-        onClick={() => document.getElementById("my_modal_2").showModal()}
+        onClick={() => document.getElementById("new_modal").showModal()}
       >
         New
       </button>
 
       {/* modal */}
-      <dialog id="my_modal_2" className="modal">
+      <dialog id="new_modal" className="modal">
         <div className="modal-box">
           <InputTextbox
             label="Title"

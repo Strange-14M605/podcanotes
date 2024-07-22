@@ -32,7 +32,7 @@ const FilterNotes = () => {
             />
             <button
               type="submit"
-              className="btn btn-warning btn-outline"
+              className="btn btn-warning btn-outline ml-2"
               onClick={() => filterNotes()}
             >
               Filter
