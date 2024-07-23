@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useParams } from 'next/navigation'
 
 //components
-import EditNote from "./components/EditNote.jsx"
-import DeleteNote from "./components/DeleteNote.jsx"
+import EditNote from "../../components/EditNote.jsx"
+import DeleteNote from "../../components/DeleteNote.jsx"
 
 const page = () => {
   const [note, setNote] = useState({})
