@@ -1,45 +1,46 @@
-"use client"
-import React, {useState} from 'react'
+"use client";
+import React, { useState } from "react";
 
 //components
-import InputTextbox from './InputTextbox';
+import InputTextbox from "./InputTextbox";
 
-const FilterNotes = () => {
-    const [filter, setFilter] = useState("");
-    const filterNotes = async() => {
-        try {
-            const body={filter};
-            const response= await fetch(`http://localhost:5000/note/filter/${filter}`,{
-                method:"POST",
-                headers:{"Content-type":"application/json"},
-                body: JSON.stringify(body)
-            });
-            console.log(response);
-        } catch (error) {
-            console.error(error.message);
-        }
-    };
+const FilterNotes = ({ onFilter, removeFilter, getNote }) => {
+  const [filter, setFilter] = useState("");
 
   return (
     <div className="navbar flex-1">
-          <form>
-            <InputTextbox
-              label="filter by tag"
-              placeholder="search filter..."
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              required
-            />
-            <button
-              type="submit"
-              className="btn btn-warning btn-outline ml-2"
-              onClick={() => filterNotes()}
-            >
-              Filter
-            </button>
-          </form>
-        </div>
-  )
-}
+      <form>
+        <InputTextbox
+          label="filter by tag"
+          placeholder="search filter..."
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          required
+        />
+        <button
+          type="submit"
+          className="btn btn-warning btn-outline ml-2"
+          onClick={(e) => {
+            e.preventDefault();
+            onFilter(filter);
+          }}
+        >
+          Filter
+        </button>
+      </form>
+      {removeFilter && (
+        <button
+          className="btn btn-warning btn-outline ml-2"
+          onClick={() => {
+            setFilter("");
+            getNote();
+          }}
+        >
+          Remove Filter
+        </button>
+      )}
+    </div>
+  );
+};
 
-export default FilterNotes
+export default FilterNotes;

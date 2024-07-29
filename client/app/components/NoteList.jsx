@@ -7,20 +7,43 @@ import FilterNotes from "./FilterNotes";
 
 const NoteList = () => {
   const [noteList, setNoteList] = useState([]);
+  const [removeFilter, setRemoveFilter] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const getNotes = async () => {
     try {
       const response = await fetch("http://localhost:5000/note");
       const jsonData = await response.json();
       setNoteList(jsonData);
-      // console.log(noteList);
+      if (jsonData.length === 0) {
+        setErrorMsg(
+          "No notes found! Create a new note using the 'New' button above."
+        );
+      } else {
+        setErrorMsg("");
+      }
     } catch (error) {
       console.error(error.message);
     }
   };
 
-  // useEffect(() => {
-  // }, [noteList]);
+  const onFilter = async (tag) => {
+    try {
+      const response = await fetch(`http://localhost:5000/note/filter/${tag}`);
+      const jsonData = await response.json();
+      setNoteList(jsonData);
+      if (jsonData.length === 0) {
+        setErrorMsg(
+          "There are no notes with this filter. Create a new note using the 'New' button above."
+        );
+      } else {
+        setErrorMsg("");
+      }
+      setRemoveFilter(true);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   useEffect(() => {
     getNotes();
@@ -28,7 +51,11 @@ const NoteList = () => {
 
   return (
     <Fragment>
-      <FilterNotes />
+      <FilterNotes
+        onFilter={onFilter}
+        removeFilter={removeFilter}
+        getNote={getNotes}
+      />
       <div>
         {noteList.map((note, index) => {
           return (
@@ -42,6 +69,7 @@ const NoteList = () => {
           );
         })}
       </div>
+      {errorMsg}
     </Fragment>
   );
 };
