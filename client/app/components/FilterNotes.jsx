@@ -2,15 +2,16 @@
 import React, { useState } from "react";
 
 //components
-import InputTextbox from "./InputTextbox";
+import FilterTextbox from "./FilterTextbox";
 
 const FilterNotes = ({ onFilter, removeFilter, getNote }) => {
   const [filter, setFilter] = useState("");
 
   return (
-    <div className="navbar flex-1">
+    <div>
       <form>
-        <InputTextbox
+      <div className="join py-5">
+        <FilterTextbox
           label="filter by tag"
           placeholder="search filter..."
           value={filter}
@@ -19,7 +20,7 @@ const FilterNotes = ({ onFilter, removeFilter, getNote }) => {
         />
         <button
           type="submit"
-          className="btn btn-warning btn-outline ml-2"
+          className="btn btn-accent btn-outline join-item"
           onClick={(e) => {
             e.preventDefault();
             onFilter(filter);
@@ -27,10 +28,9 @@ const FilterNotes = ({ onFilter, removeFilter, getNote }) => {
         >
           Filter
         </button>
-      </form>
-      {removeFilter && (
+        {removeFilter && (
         <button
-          className="btn btn-warning btn-outline ml-2"
+          className="btn btn-warning btn-outline ml-2 join-item"
           onClick={() => {
             setFilter("");
             getNote();
@@ -39,6 +39,9 @@ const FilterNotes = ({ onFilter, removeFilter, getNote }) => {
           Remove Filter
         </button>
       )}
+        </div>
+      </form>
+      
     </div>
   );
 };

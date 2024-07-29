@@ -62,7 +62,9 @@ const page = () => {
 
   return (
     <Fragment>
+      
       <Link href={`/view/${id}`} className="btn btn-circle btn-ghost">
+    
         Back
       </Link>
       {/* TITLE */}
@@ -80,16 +82,18 @@ const page = () => {
       </label>
 
       {/* NOTE */}
-      <label className="input input-bordered flex items-center gap-4 my-2">
+      <label>
         Note:
-        <input
-          type="text"
+        <textarea
+          className="textarea textarea-bordered resize-y resize-x-none rounded-md w-full"
+          rows="10"
           name="note"
-          className="grow"
           value={note.note}
           onChange={(e) => handleChange(e)}
-        />
+          required
+        ></textarea>
       </label>
+
       {/* TAG */}
       <label className="input input-bordered flex items-center gap-4 my-2">
         Tag:
@@ -120,7 +124,7 @@ const page = () => {
           handleSubmit();
         }}
       >
-        <button type="submit" className="btn btn-warning btn-outline mr-6">
+        <button type="submit" className="btn btn-accent btn-outline mr-6">
           Confirm Edit
         </button>
       </form>

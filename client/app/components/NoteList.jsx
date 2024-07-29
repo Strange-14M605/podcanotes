@@ -22,6 +22,7 @@ const NoteList = () => {
       } else {
         setErrorMsg("");
       }
+      setRemoveFilter(false);
     } catch (error) {
       console.error(error.message);
     }
@@ -56,7 +57,7 @@ const NoteList = () => {
         removeFilter={removeFilter}
         getNote={getNotes}
       />
-      <div className="flex justify-around gap-6">
+      <div className="grid grid-cols-3 gap-6">
         {noteList.map((note, index) => {
           return (
             <NoteCard
@@ -69,7 +70,9 @@ const NoteList = () => {
           );
         })}
       </div>
+      <div className="text-lg py-10">
       {errorMsg}
+      </div>
     </div>
   );
 };

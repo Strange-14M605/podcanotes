@@ -29,7 +29,7 @@ const NewNote = () => {
   return (
     <div className="flex-none">
       <button
-        className="btn btn-warning btn-outline"
+        className="btn btn-accent btn-outline"
         onClick={() => document.getElementById("new_modal").showModal()}
       >
         New
@@ -37,7 +37,7 @@ const NewNote = () => {
 
       {/* modal */}
       <dialog id="new_modal" className="modal modal-content">
-        <div className="modal-box">
+        <div className="modal-box w-3/4">
           <InputTextbox
             label="Title"
             placeholder="Title"
@@ -45,13 +45,19 @@ const NewNote = () => {
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-          <InputTextbox
-            label="Note"
-            placeholder="Start typing here..."
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            required
-          />
+
+          <label>
+        Note:
+        <textarea
+          className="textarea textarea-bordered resize-y resize-x-none rounded-md w-full"
+          placeholder="Start typing here..."
+          rows="10"
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          required
+        ></textarea>
+      </label>
+
           <InputTextbox
             label="Tag"
             placeholder="tag"
@@ -69,7 +75,7 @@ const NewNote = () => {
           <div className="navbar mt-8">
             <button
               type="submit"
-              className="btn btn-warning btn-outline mr-6"
+              className="btn btn-accent btn-outline mr-6"
               onClick={(e) => {
                 e.preventDefault();
                 addNote();

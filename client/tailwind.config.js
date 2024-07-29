@@ -9,6 +9,10 @@ module.exports = {
     require('daisyui'),
   ],
   daisyui: {
-    themes: ["light", "dark", "cupcake","autumn","lemonade","synthwave"],
+    themes: [{lemonade:{
+      ...require("daisyui/src/theming/themes")["lemonade"],
+      primary: "#f9eb9e",
+    }},
+      "synthwave"],
   },
 };

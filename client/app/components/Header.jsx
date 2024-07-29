@@ -11,11 +11,11 @@ const Header = () => {
     <div className="navbar bg-base-100">
       <div className="flex-1">
         <a href="/" className="btn btn-ghost text-xl">
-          Podcanotes
+          Podcanotes : your podcast note-taker
         </a>
       </div>
-      <Theme />
       <NewNote />
+      <Theme />
     </div>
   );
 };

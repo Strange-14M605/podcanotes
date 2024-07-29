@@ -19,7 +19,7 @@ const DeleteNote = ({id}) => {
   return (
     <div className="flex-none">
       <button
-        className="btn btn-warning btn-outline"
+        className="btn btn-warning btn-outline mb-5"
         onClick={() => deleteNote()}
       >
         Delete
