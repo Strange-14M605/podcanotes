@@ -1,8 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 
 //components
 import NoteCard from "./NoteCard";
+import FilterNotes from "./FilterNotes";
 
 const NoteList = () => {
   const [noteList, setNoteList] = useState([]);
@@ -26,19 +27,22 @@ const NoteList = () => {
   }, []);
 
   return (
-    <div>
-      {noteList.map((note, index) => {
-        return (
-          <NoteCard
-            key={index}
-            id={note.note_id}
-            title={note.title}
-            note={note.note}
-            tag={note.tag}
-          />
-        );
-      })}
-    </div>
+    <Fragment>
+      <FilterNotes />
+      <div>
+        {noteList.map((note, index) => {
+          return (
+            <NoteCard
+              key={index}
+              id={note.note_id}
+              title={note.title}
+              note={note.note}
+              tag={note.tag}
+            />
+          );
+        })}
+      </div>
+    </Fragment>
   );
 };
 

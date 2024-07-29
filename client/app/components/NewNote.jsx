@@ -16,7 +16,7 @@ const NewNote = () => {
       const response = await fetch("http://localhost:5000/note", {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: await JSON.stringify(body),
+        body: JSON.stringify(body),
       });
 
       console.log(response);
