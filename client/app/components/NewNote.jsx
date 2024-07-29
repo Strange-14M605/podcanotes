@@ -36,7 +36,7 @@ const NewNote = () => {
       </button>
 
       {/* modal */}
-      <dialog id="new_modal" className="modal">
+      <dialog id="new_modal" className="modal modal-content">
         <div className="modal-box">
           <InputTextbox
             label="Title"

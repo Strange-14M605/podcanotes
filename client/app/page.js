@@ -5,7 +5,7 @@ import NoteList from "./components/NoteList"
 
 export default function Home() {
   
-  return <main>
+  return <main className="justify-items-center">
     <NoteList />
   </main>;
 }

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useParams,useRouter } from "next/navigation";
 
 //components
-// import EditNote from "../../components/EditNote.jsx"
 import DeleteNote from "../../components/DeleteNote.jsx";
 
 const page = () => {
@@ -29,13 +28,15 @@ const page = () => {
 
   return (
     <div className="flex flex-wrap justify-between">
-      <div className="w-3/4">
-        <Link href="/" className="btn btn-circle btn-ghost">
+      <div className="w-3/4 pl-5">
+        <Link href="/" className="btn btn-circle btn-ghost mb-8 underline underline-offset-4">
           Back
         </Link>
-        <h1>{note.title}</h1>
-        <h1>{note.tag}</h1>
-        <h1>{note.note}</h1>
+        <h1 className="text-2xl font-semibold mb-2">{note.title}</h1>
+        <div className=" bg-amber-200 rounded-full px-5 w-20">
+        <h1 className="mb-5">{note.tag}</h1>
+        </div>
+        <h1 className="text-lg">{note.note}</h1>
       </div>
 
       <div className="w-1/4">

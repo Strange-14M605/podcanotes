@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect} from "react";
 
 //components
 import NoteCard from "./NoteCard";
@@ -50,13 +50,13 @@ const NoteList = () => {
   }, []);
 
   return (
-    <Fragment>
+    <div>
       <FilterNotes
         onFilter={onFilter}
         removeFilter={removeFilter}
         getNote={getNotes}
       />
-      <div>
+      <div className="flex justify-around gap-6">
         {noteList.map((note, index) => {
           return (
             <NoteCard
@@ -70,7 +70,7 @@ const NoteList = () => {
         })}
       </div>
       {errorMsg}
-    </Fragment>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ const NoteCard = ({ id, title, note, tag}) => {
     <h6>{tag}</h6>
     <p>{truncatedNote}</p>
     <div className="card-actions justify-end">
-      <button type="button" onClick={() => router.push(`/view/${id}`)}>
+      <button type="button" onClick={() => router.push(`/view/${id}`)} className="btn btn-circle btn-ghost">
       View
     </button>
     </div>

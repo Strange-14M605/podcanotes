@@ -5,10 +5,10 @@ import Link from "next/link";
 
 const page = () => {
   const [note, setNote] = useState({
-    title: '',
-    note: '',
-    tag: '',
-    url: '',
+    title: "",
+    note: "",
+    tag: "",
+    url: "",
   });
   const { id } = useParams();
 
@@ -22,7 +22,7 @@ const page = () => {
       console.error(error.message);
     }
   };
-  
+
   useEffect(() => {
     getNote();
   }, []);
@@ -35,7 +35,7 @@ const page = () => {
     }));
   };
 
-//edit function
+  //edit function
   const handleSubmit = async () => {
     try {
       const body = {
@@ -65,67 +65,68 @@ const page = () => {
       <Link href={`/view/${id}`} className="btn btn-circle btn-ghost">
         Back
       </Link>
-              {/* NOTE */}
-              <label className="input input-bordered flex items-center gap-4 my-2">
-            Title:
-            <input
-              type="text"
-              name="title"
-              className="grow"
-              value={note.title}
-              onChange={(e) => handleChange(e)}
-            />
-          </label>
+      {/* TITLE */}
+      <label className="input input-bordered flex items-center gap-4 my-2">
+        Title:
+        <input
+          type="text"
+          name="title"
+          className="grow"
+          value={note.title}
+          onChange={(e) => handleChange(e)}
+          rows={20}
+          style={{ resize: "vertical" }}
+        />
+      </label>
 
-        {/* NOTE */}
-        <label className="input input-bordered flex items-center gap-4 my-2">
-            Note:
-            <input
-              type="text"
-              name="note"
-              className="grow"
-              value={note.note}
-              onChange={(e) => handleChange(e)}
-            />
-          </label>
-          {/* TAG */}
-          <label className="input input-bordered flex items-center gap-4 my-2">
-            Tag:
-            <input
-              type="text"
-              name="tag"
-              className="grow"
-              value={note.tag}
-              onChange={(e) => handleChange(e)}
-            />
-          </label>
-          {/* URL */}
-          <label className="input input-bordered flex items-center gap-4 my-2">
-            URL:
-            <input
-              type="text"
-              name="url"
-              className="grow"
-              value={note.url}
-              onChange={(e) => handleChange(e)}
-            />
-          </label>
-          
-            {/* CONFIRM EDIT */}
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                handleSubmit();
-              }}>
-            <button
-              type="submit"
-              className="btn btn-warning btn-outline mr-6">
-              Confirm Edit
-            </button>
-            </form>
-            <Link href={`/view/${id}`} className="btn btn-circle btn-ghost">
+      {/* NOTE */}
+      <label className="input input-bordered flex items-center gap-4 my-2">
+        Note:
+        <input
+          type="text"
+          name="note"
+          className="grow"
+          value={note.note}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
+      {/* TAG */}
+      <label className="input input-bordered flex items-center gap-4 my-2">
+        Tag:
+        <input
+          type="text"
+          name="tag"
+          className="grow"
+          value={note.tag}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
+      {/* URL */}
+      <label className="input input-bordered flex items-center gap-4 my-2">
+        URL:
+        <input
+          type="text"
+          name="url"
+          className="grow"
+          value={note.url}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
+
+      {/* CONFIRM EDIT */}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
+        <button type="submit" className="btn btn-warning btn-outline mr-6">
+          Confirm Edit
+        </button>
+      </form>
+      <Link href={`/view/${id}`} className="btn btn-circle btn-ghost">
         Cancel
       </Link>
-
     </Fragment>
   );
 };
